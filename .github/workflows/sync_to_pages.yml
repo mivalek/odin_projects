@@ -1,0 +1,56 @@
+name: Sync projects to GitHub Pages repo
+
+on:
+  push:
+    branches:
+      - main # or whatever branch you use
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout odin_projects repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Clone GitHub Pages repo
+        run: |
+          git clone https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/mivalek/mivalek.github.io.git pages
+
+      - name: Build and sync projects
+        run: |
+          mkdir -p pages/public/static/odin
+
+          for dir in */ ; do
+            echo "Processing $dir"
+
+            # Clean previous output
+            rm -rf pages/public/static/odin/$dir
+
+            if [ -f "$dir/package.json" ]; then
+              echo "Running npm build for $dir"
+              cd "$dir"
+              npm ci
+              npm run build
+              cd ..
+              rsync -av "$dir/dist/" "pages/public/static/odin/$dir"
+
+            else
+              echo "No build step for $dir, copying raw files"
+              rsync -av --exclude='.git' "$dir" "pages/public/static/odin/$dir"
+            fi
+          done
+
+      - name: Commit and push changes
+        run: |
+          cd pages
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add public/static/odin
+          git commit -m "Sync projects repo" || echo "No changes to commit"
+          git push
