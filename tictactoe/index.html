@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="ctrl">
+      <label for="dims">Grid size</label
+      ><input type="number" min="3" max="10" name="dims" id="dims" />
+      <div>(<span id="n-to-win"></span> to win)</div>
+    </div>
+    <div id="app">
+      <div class="player active">
+        <div class="title">Player 1</div>
+        <div class="name"></div>
+        <div class="score">Score: <span class="score-value">0</span></div>
+      </div>
+      <div id="board"></div>
+      <div class="player">
+        <div class="title">Player 2</div>
+        <div class="name"></div>
+        <div class="score">Score: <span class="score-value">0</span></div>
+      </div>
+    </div>
+    <dialog id="result" closedby="any">
+      <div id="message"></div>
+      <button type="submit">New game</button>
+    </dialog>
+  </body>
+  <script src="index.js"></script>
+</html>
