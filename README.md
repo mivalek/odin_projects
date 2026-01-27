@@ -2,7 +2,7 @@
 
 A selection of assignments from the amazing resource that is [The Odin Project](https://www.theodinproject.com/)
 
-:warning: I haven't spent a huge amount of effort optimising for mobile but it shouldn't be too bad...
+:warning: I haven't spent a huge amount of effort optimising for mobile but it shouldn't be too bad even on small screens.
 
 ## Library
 
