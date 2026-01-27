@@ -27,6 +27,11 @@ jobs:
           mkdir -p pages/public/static/odin
 
           for dir in */ ; do
+
+            if [[ "$dir" == "pages/" || "$dir" == ".github/" ]]; then
+              continue
+            fi
+            
             echo "Processing $dir"
 
             # Clean previous output
