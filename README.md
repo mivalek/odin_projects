@@ -1,0 +1,28 @@
+# Odin Projects Assignments
+
+A selection of assignments from the amazing resource that is [The Odin Project](https://www.theodinproject.com/)
+
+:warning: I haven't spent a huge amount of effort optimising for mobile but it shouldn't be too bad...
+
+## Library
+
+Add and remove your books to the library an mark them as read or unread. No persistent storage is implemented but it's trivial with `localStorage`.
+
+:desktop_computer: [Live preview](mivalek.github.io/odin/library)
+
+### :book: Main learning objectives
+
+- learn object constructors
+- use HTML `<form>` inside a `<dialog> to add items
+- implement basic interactivity (add, remove, mark un/read)
+
+## Tic Tac Toe
+
+Play a game (or several) of Tic Tac Toe. Choose your own board size.
+
+### :book: Main learning objectives
+
+- learn the Immediately Invoked Function Expression (IIFE) module pattern
+- Expose as few global variables as you can
+
+:desktop_computer: [Live preview](mivalek.github.io/odin/tictactoe)
