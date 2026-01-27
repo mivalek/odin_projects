@@ -8,7 +8,7 @@ A selection of assignments from the amazing resource that is [The Odin Project](
 
 Add and remove your books to the library an mark them as read or unread. No persistent storage is implemented but it's trivial with `localStorage`.
 
-:desktop_computer: [Live preview](mivalek.github.io/odin/library)
+:desktop_computer: [Live preview](mivalek.github.io/static/odin/library/)
 
 ### :book: Main learning objectives
 
@@ -25,4 +25,4 @@ Play a game (or several) of Tic Tac Toe. Choose your own board size.
 - learn the Immediately Invoked Function Expression (IIFE) module pattern
 - Expose as few global variables as you can
 
-:desktop_computer: [Live preview](mivalek.github.io/odin/tictactoe)
+:desktop_computer: [Live preview](mivalek.github.io/static/odin/tictactoe/)
