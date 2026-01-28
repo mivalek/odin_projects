@@ -26,3 +26,15 @@ Play a game (or several) of Tic Tac Toe. Choose your own board size.
 - Expose as few global variables as you can
 
 :desktop_computer: [Live preview](https://mivalek.github.io/static/odin/tictactoe/)
+
+## Restaurant
+
+Dine in Valhalla! (not really, though) Minimal SPA with a basic router.
+
+### :book: Main learning objectives
+
+- learn ES6 modules
+- use webpack to build the app
+- implement basic SPA routing
+
+:desktop_computer: [Live preview](https://mivalek.github.io/static/odin/restaurant/)
