@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --shadow: 0 0 10px #0002;
+  --gray: #0004;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 500;
+}
+button {
+  width: fit-content;
+  border: none;
+  border-radius: 1rem;
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
+
+.completed .title {
+  text-decoration: line-through;
+  text-decoration-inset: -0.5rem;
+}
+
+#new-project {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
+#projects-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+}
+.project-card {
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  width: max-content;
+  padding-left: 0.25rem;
+  overflow: clip;
+  background: var(--color);
+
+  .card-content {
+    background: #fffd;
+    width: fit-content;
+    padding: 1rem;
+  }
+
+  .project-ctrls {
+    display: flex;
+    gap: 1rem;
+  }
+  .tasks-container {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    padding-block: 1rem;
+    align-items: center;
+
+    ul {
+      background: #fff;
+      border: solid 1px var(--color);
+      border-radius: 5px;
+      list-style: none;
+      padding: 0;
+      width: 100%;
+    }
+
+    button {
+      background: var(--color);
+      color: white;
+      border-radius: 100%;
+      width: 2rem;
+      height: 2rem;
+      padding: 0;
+    }
+  }
+}
+
+header {
+  display: flex;
+  background: #fbfaf8;
+}
+
+nav {
+  ul {
+    list-style: none;
+    padding: 0;
+
+    h2 {
+      padding-inline: 2.5rem;
+    }
+
+    .active {
+      background: var(--gray);
+      border-radius: 5px;
+    }
+    button {
+      padding-inline: 2.5rem;
+      background: none;
+      width: 100%;
+      border-radius: 0;
+      text-align: start;
+    }
+  }
+}
+#small-screen-fallback {
+  display: none;
+}
+
+@media (width >= 40rem) {
+  #app {
+    display: flex;
+  }
+  header {
+    flex-direction: column;
+    height: 100dvh;
+    position: sticky;
+    top: 0;
+    padding: 2rem 0.5rem;
+  }
+}
