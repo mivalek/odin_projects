@@ -90,7 +90,7 @@ function taskItemView(task: Task) {
           </button>
           <div class="btn-container">
             <button class="edit-task">Edit</button>
-            <button class="delete-task-btn">X</button>
+            <button class="delete-task-btn" aria-label="Delete task">X</button>
           </div>
         </div>
       </li>`;

@@ -631,25 +631,30 @@ main {
 
   .btn-container {
     padding-top: 0.6rem;
-    display: flex;
-    gap: 1rem;
   }
+
+  & li:hover {
+    .delete-task-btn {
+      visibility: visible;
+    }
+  }
+
   .task {
-    width: 350px;
+    width: 360px;
     display: flex;
+    position: relative;
     gap: 2rem;
     padding-block: 1rem;
-    padding-left: 2rem;
+    margin-right: 2rem;
     border-bottom: solid 1px;
 
-    &:hover {
-      .delete-task-btn {
-        visibility: visible;
-      }
-    }
     .task-details-btn {
       border: none;
       padding: 0;
+    }
+    .delete-task-btn {
+      position: absolute;
+      right: -1.5rem;
     }
     h3 {
       text-align: start;
