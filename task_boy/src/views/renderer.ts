@@ -51,7 +51,7 @@ export function makeRenderer(
     if (settings.jank) {
       jank = document
         .getElementById("render-jank")!
-        .animate([{ top: 0 }, { top: "100%" }], { duration: 150 });
+        .animate([{ top: 0 }, { top: "100%" }], { duration: 100 });
     }
   }
 
@@ -60,7 +60,7 @@ export function makeRenderer(
       if (draggedProject) return; // currently dragging projects, not dialogs
       // add jank :)
 
-      if (settings.jank && Number(new Date()) % 30 != 0) return;
+      if (settings.jank && Number(new Date()) % 15 != 0) return;
       triggerRenderJank();
 
       e.preventDefault();
