@@ -25,7 +25,7 @@ export function projectListView(projects: Project[]) {
       <button id='misc-projects-btn'>Miscellaneous</button>
     </li>
   </ul>
-  <div id="new-project"><button id="new-project-btn" aria-label="New project">+</button></div>
+  <div id="new-project" aria-label="New Quest"><button id="new-project-btn" aria-label="New project">+</button></div>
   </li>
   `;
   return template;
@@ -36,7 +36,7 @@ function projectItemView(project: Project) {
   <li data-id="${project.id}" data-order="${project.position}">
     <div>
       <button class="project-btn" draggable="true">${project.name}</button>
-      <button class="delete-project-dialog">X</button>
+      <button class="delete-project-dialog" aria-label="Delete QUest">X</button>
     </div>
   </li>`;
 

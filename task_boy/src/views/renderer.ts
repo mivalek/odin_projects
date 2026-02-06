@@ -144,11 +144,14 @@ export function makeRenderer(
   function attachTaskListEventListeners(nodeList: NodeListOf<HTMLElement>) {
     nodeList.forEach((t) => {
       const taskId = t.id as Tid;
-      t.addEventListener("click", function () {
-        const task = taskController.getTaskByID(taskId)!;
-        console.log(taskId, task);
-        renderTaskDetails(root, task);
-      });
+      t.querySelector(".task-details-btn")!.addEventListener(
+        "click",
+        function () {
+          const task = taskController.getTaskByID(taskId)!;
+          console.log(taskId, task);
+          renderTaskDetails(root, task);
+        },
+      );
       // edit task
       t.querySelector(".edit-task")!.addEventListener("click", function (e) {
         e.stopPropagation();

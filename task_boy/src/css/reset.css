@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #000;
+}
 /* 2. Remove default margin */
 *:not(dialog) {
   margin: 0;

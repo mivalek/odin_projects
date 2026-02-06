@@ -12,6 +12,7 @@ import { dateToDue, makeDatesForInput, strToKebabCase } from "../utils";
 import { Tid } from "../types";
 import { modalDialog } from "@components/modalDialog";
 import { Project } from "@models/project";
+import { tooltip } from "@components/tooltip";
 
 export function taskDetailsView(task: Task, projectName: string | null) {
   const taskContainer = document.createElement("div");
@@ -74,13 +75,19 @@ function taskItemView(task: Task) {
   const template = `
     <li>
       <div class="task ${task.completed ? "completed" : ""}" id="${task.id}">
-        <input type="checkbox" class="toggle-complete" ${task.completed ? " checked" : ""}>
-        <div class="task-body">
+        <div class="tooltip-container">
+          <label for="toggle-completed" style="position:absolute; left:-2000px">Toggle task completed status</label>
+          <input aria-describedby="completedLabel" id="toggle-completed" type="checkbox" class="toggle-complete" ${task.completed ? " checked" : ""}>
+          ${tooltip(`Mark as ${task.completed ? "not " : ""}done`)}
+        </div>
+        <button class="task-body task-details-btn" aria-label="Show task details">
           <h3 class="title">${task.name}</h3>
           <div class="details">
-            <div class="priority ${isOverdue ? "overdue" : priorityLabel.toLowerCase()}">${priorityDisplay}</div>
-            <div class="due">${due}</div></div>
-          </div>
+            <div ${isOverdue ? "" : "aria-describedby='priority-tooltip'"} class="priority ${isOverdue ? "overdue" : priorityLabel.toLowerCase()}">${priorityDisplay}</div>
+            ${isOverdue ? "" : tooltip("Priority: " + priorityLabel)}
+            <div class="due">${due}</div>
+            </div>
+          </button>
           <div class="btn-container">
             <button class="edit-task">Edit</button>
           </div>
