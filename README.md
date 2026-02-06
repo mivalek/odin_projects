@@ -8,6 +8,8 @@ A selection of assignments from the amazing resource that is [The Odin Project](
 
 Fallout-inspired task-management app written in vanilla TS. It doesn't use any 3rd party libraries.
 
+:warning: The rendering jankiness is a feature and can be turned off in settings. I just think it kinda matches the old CRT aesthetic. ¯\\_(ツ)_/¯
+
 ### :rocket: Features
 
 - Create projects (quests) and assign tasks to them
