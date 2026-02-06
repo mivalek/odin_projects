@@ -32,7 +32,8 @@ export function pageView(
       <h2>${title}</h2>
       <button id="toggle-complete-btn">${showCompleted ? "Hide" : "Show"} done</button>
     </div>
-    <div class="main-content">${currentProject ? mainView(tasks) : todayView(tasks)}</div>`;
+    <div class="main-content">${currentProject ? mainView(tasks) : todayView(tasks)}</div>
+    <div id="render-jank"></div>`;
   const header = document.createElement("header");
   header.innerHTML = headerView(projects);
 
@@ -75,7 +76,6 @@ function mainView(tasks: Task[]) {
   const sortedTasks = tasks.toSorted((a, b) =>
     a.completed > b.completed ? -1 : 1,
   );
-  console.log(sortedTasks.map((t) => t.name));
   const template = `<section class="single">${tasks.length ? taskListView(sortedTasks) : "<div class='msg'>Only the wasteland meets you here...</div>"}</section>`;
   return template;
 }
@@ -86,8 +86,8 @@ function todayView(tasks: Task[]) {
         <div class='msg'>
           <br>
           <p>Welcome! Start by adding a Task or a Quest</p>
-          <br><br>
-          <p><------------------</p>
+          <br>
+          <p><<<<<</p>
         </div>
       </section>`;
   const today = new Date().toDateString();

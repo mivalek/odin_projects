@@ -52,6 +52,7 @@ export interface IPosition {
 
 export interface ISettings {
   showCompleted: boolean;
+  jank: boolean;
   theme: THEME | "random";
 }
 

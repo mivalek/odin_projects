@@ -1,10 +1,17 @@
-import { fieldSet, form, radioInput } from "@components/form";
+import { fieldSet, form, labelledInput, radioInput } from "@components/form";
 import { modalDialog } from "@components/modalDialog";
 import { THEME, THEME_LABELS } from "../constants";
 import { ISettings } from "../types";
 import { strToKebabCase } from "../utils";
 
 export function settingsView(settings: ISettings) {
+  const jank = document.createElement("div");
+  jank.classList.add("checkbox");
+  jank.innerHTML = `
+  <label for="jank">Jank (:</label>
+  </input>
+  <input type="checkbox" name="jank" id="jank" ${settings.jank ? "checked" : ""}>
+  `;
   const radioButtons: HTMLElement[] = [];
   for (let t in THEME) {
     if (!isNaN(Number(t))) continue;
@@ -38,7 +45,7 @@ export function settingsView(settings: ISettings) {
   submitBtn.type = "submit";
   submitBtn.textContent = "OK";
 
-  const settingsForm = form("settings-form", [themeSet, submitBtn]);
+  const settingsForm = form("settings-form", [jank, themeSet, submitBtn]);
   const dialog = modalDialog("Settings");
   dialog.querySelector("dialog")!.appendChild(settingsForm);
 

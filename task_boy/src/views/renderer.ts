@@ -4,7 +4,7 @@ import { taskDetailsView, taskFormView } from "./task";
 import { IPosition, ISettings, TCurrentProject, Tid } from "../types";
 import { pageView } from "./page";
 import { ProjectController } from "@controllers/project";
-import { THEME, THEME_LABELS } from "../constants";
+import { THEME } from "../constants";
 import { settingsView } from "./settings";
 import { handleInvalidDate, handleInvalidName } from "../utils";
 import { projectDeleteDialogView, projectFormView } from "./project";
@@ -29,6 +29,8 @@ export function makeRenderer(
   applySettings();
   attachDocumentEventListeners(document);
 
+  let jank: Animation = new Animation();
+
   function renderPage(parent: HTMLElement) {
     parent.innerHTML = "";
     updateCurrentTasks();
@@ -45,11 +47,22 @@ export function makeRenderer(
 
     attachMainEventListeners(main);
     parent.appendChild(main);
+
+    if (settings.jank) {
+      jank = document
+        .getElementById("render-jank")!
+        .animate([{ top: 0 }, { top: "100%" }], { duration: 150 });
+    }
   }
 
   function attachDocumentEventListeners(doc: Document) {
     doc.addEventListener("dragover", (e) => {
       if (draggedProject) return; // currently dragging projects, not dialogs
+      // add jank :)
+
+      if (settings.jank && Number(new Date()) % 30 != 0) return;
+      triggerRenderJank();
+
       e.preventDefault();
       if (!(dialog && dialogPosition[dialog.id])) return;
       const pointerDiff = {
@@ -148,7 +161,6 @@ export function makeRenderer(
         "click",
         function () {
           const task = taskController.getTaskByID(taskId)!;
-          console.log(taskId, task);
           renderTaskDetails(root, task);
         },
       );
@@ -338,6 +350,7 @@ export function makeRenderer(
       e.preventDefault();
       const formData = new FormData(this.closest("form")!);
 
+      settings.jank = formData.get("jank")! === "on";
       settings.theme = formData.get("theme")! as THEME;
 
       saveSettingsToLS(settings);
@@ -373,6 +386,7 @@ export function makeRenderer(
       e.dataTransfer!.setDragImage(document.createElement("div"), 0, 0);
       pointerPosition = { x: e.clientX, y: e.clientY };
     });
+    dialogElement.ontoggle = triggerRenderJank;
   }
 
   function makeProjectDraggable(projectListBtn: HTMLButtonElement) {
@@ -479,5 +493,9 @@ export function makeRenderer(
     currentTasks = Task.sort(ct);
   }
 
+  function triggerRenderJank() {
+    if (!settings.jank) return;
+    jank.play();
+  }
   return { renderPage };
 }

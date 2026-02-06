@@ -57,7 +57,7 @@ export function init(doc: Document) {
     taskController.fetchTasks("localStorage");
     const settings: ISettings = localStorage.getItem("tbSettings")
       ? JSON.parse(localStorage.getItem("tbSettings")!)
-      : { theme: THEME.GREEN };
+      : { theme: THEME.GREEN, jank: true };
     const renderer = makeRenderer(
       doc.getElementById("app")!,
       taskController,

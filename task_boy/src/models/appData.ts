@@ -8,7 +8,7 @@ export class AppData implements IAppData {
   tasks: Task[];
   projects: Project[];
   constructor() {
-    this.settings = { showCompleted: false, theme: THEME.GREEN };
+    this.settings = { showCompleted: false, jank: true, theme: THEME.GREEN };
     this.tasks = [];
     this.projects = [];
   }
