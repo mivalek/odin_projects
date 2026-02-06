@@ -216,21 +216,15 @@ nav {
       overflow-x: auto;
       margin-bottom: 0.5rem;
 
+      .delete-project-dialog {
+        padding-right: 2rem;
+      }
       div {
         display: flex;
 
         &:hover .delete-project-dialog {
           visibility: visible;
         }
-      }
-
-      .delete-project-dialog {
-        visibility: hidden;
-        font-family: Arial;
-        font-size: 0.8rem;
-        line-height: 0;
-        width: 2rem;
-        padding-inline: 0;
       }
 
       & .project-btn {
@@ -354,6 +348,19 @@ button {
   text-shadow: var(--glow);
   border: solid 1.5px hsl(var(--primary));
   border-radius: 0;
+}
+
+.delete-project-dialog,
+.delete-task-btn {
+  visibility: hidden;
+  font-family: Arial;
+  font-size: 0.8rem;
+  line-height: 0;
+  width: 1rem;
+  padding-inline: 0;
+  border: none;
+  min-height: 2rem;
+  justify-content: center;
 }
 
 dialog,
@@ -624,14 +631,22 @@ main {
 
   .btn-container {
     padding-top: 0.6rem;
+    display: flex;
+    gap: 1rem;
   }
   .task {
     width: 350px;
     display: flex;
     gap: 2rem;
     padding-block: 1rem;
+    padding-left: 2rem;
     border-bottom: solid 1px;
 
+    &:hover {
+      .delete-task-btn {
+        visibility: visible;
+      }
+    }
     .task-details-btn {
       border: none;
       padding: 0;

@@ -158,6 +158,15 @@ export function makeRenderer(
         const task = taskController.getTaskByID(taskId)!;
         renderTaskForm(root, task);
       });
+      // delete task
+      t.querySelector(".delete-task-btn")!.addEventListener(
+        "click",
+        function (e) {
+          e.stopPropagation();
+          taskController.deleteTask(taskId);
+          renderPage(root);
+        },
+      );
       // toggle complete
       t.querySelector(".toggle-complete")!.addEventListener(
         "change",
